@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
+    "start:client": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
@@ -32,6 +33,11 @@
   },
   "homepage": "https://github.com/robhowell/mister-remote#readme",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
     "nodemon": "^1.18.10",
     "ssh2-promise": "^0.1.3"
   },

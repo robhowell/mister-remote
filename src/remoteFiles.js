@@ -57,13 +57,14 @@ const getAllFiles = async rootDir => {
     allFiles = [...allFiles, ...filesForFolder];
   });
 
-  return allFiles;
+  return allFiles.sort(insensitiveAlphabeticalSort);
 };
 
 const getAllFilenames = (...args) =>
   getAllFiles(...args).then(files => files.map(file => file.filename));
 
 module.exports = {
+  getAllFiles,
   getAllFilenames,
   getDirectories,
   getFiles,
