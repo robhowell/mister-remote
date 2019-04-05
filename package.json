@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "update-deps": "ncu -u && npm i"
+    "update-dependencies": "ncu -u && npm i"
   },
   "lint-staged": {
     "*.js": [
@@ -33,7 +33,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
-    "eslint-config-semipretty": "^3.0.0",
+    "eslint-config-semipretty": "^4.0.0",
     "eslint-config-semistandard": "^13.0.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
