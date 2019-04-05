@@ -22,53 +22,50 @@ const getDirItems = async directory => {
     .filter(removeHiddenAndMetaFiles)
     .map(({ filename, longname }) => ({
       filename,
-      isDirectory: longname.startsWith('d')
+      isDirectory: longname.startsWith('d'),
+      path: `${directory}/${filename}`
     }));
 };
 
 const getDirectories = (...args) =>
   getDirItems(...args).then(items => items.filter(item => item.isDirectory));
 
-const getDirectoryNames = (...args) =>
-  getDirectories(...args).then(files => files.map(file => file.filename));
+// const getDirectoryNames = (...args) =>
+//   getDirectories(...args).then(files => files.map(file => file.filename));
 
 const getFiles = (...args) =>
   getDirItems(...args).then(items => items.filter(item => !item.isDirectory));
 
-const getFilenames = (...args) =>
-  getFiles(...args).then(files => files.map(file => file.filename));
+// const getFilenames = (...args) =>
+//   getFiles(...args).then(files => files.map(file => file.filename));
 
-const getAllFilenames = async rootDir => {
-  let filenames = [];
-  const currentFilenames = await getFilenames(rootDir);
-  const currentFilePaths = currentFilenames.map(
-    filename => `${rootDir}/${filename}`
-  );
-  filenames = [...filenames, ...currentFilePaths];
+const getAllFiles = async rootDir => {
+  let allFiles = [];
 
-  const currentFolders = await getDirectoryNames(rootDir);
-  const currentFolderPaths = currentFolders.map(dir => `${rootDir}/${dir}`);
+  const currentItems = await getDirItems(rootDir);
 
-  const nestedFilenames = await Promise.all(
-    currentFolderPaths.map(currentFolderPath =>
-      getFilenames(currentFolderPath).then(filenames =>
-        filenames.map(filename => `${currentFolderPath}/${filename}`)
-      )
-    )
+  const currentFiles = currentItems.filter(file => !file.isDirectory);
+  allFiles = [...allFiles, ...currentFiles];
+
+  const currentFolders = currentItems.filter(file => file.isDirectory);
+
+  const nestedFiles = await Promise.all(
+    currentFolders.map(file => file.path).map(getAllFiles)
   );
 
-  nestedFilenames.forEach(filenamesForFolder => {
-    filenames = [...filenames, ...filenamesForFolder];
+  nestedFiles.forEach(filesForFolder => {
+    allFiles = [...allFiles, ...filesForFolder];
   });
 
-  return filenames;
+  return allFiles;
 };
+
+const getAllFilenames = (...args) =>
+  getAllFiles(...args).then(files => files.map(file => file.filename));
 
 module.exports = {
   getAllFilenames,
   getDirectories,
-  getDirectoryNames,
   getFiles,
-  getFilenames,
   setSsh
 };

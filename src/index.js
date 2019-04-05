@@ -16,7 +16,6 @@ const main = async () => {
   console.log('Connected to MiSTer');
 
   console.log(await getAllFilenames(megaDriveRomFolder));
-  // console.log(await getFilenames('/media/fat/Genesis/1 US - A-F'));
 };
 
 main();
