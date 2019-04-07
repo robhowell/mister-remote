@@ -29,7 +29,14 @@ class App extends Component {
 
         <ul>
           {
-            filteredRoms.map(filteredRom => <li>{filteredRom.filename}</li>)
+            filteredRoms.map(filteredRom => (
+              <li key={filteredRom.pathUnescaped}>
+                <strong>{filteredRom.filename}</strong>
+                <br/>
+                <small>{filteredRom.pathUnescaped}</small>
+                <br/>
+              </li>
+              ))
           }
         </ul>
       </Main>

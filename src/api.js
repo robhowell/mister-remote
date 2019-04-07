@@ -5,7 +5,8 @@ const koaBody = require('koa-body');
 const cors = require('@koa/cors');
 
 const { megaDriveRomFolder } = require('./config');
-const { getAllFiles } = require('./remoteFiles');
+const getAllFiles = require('./getAllFiles');
+const startRom = require('./startRom');
 
 const app = new Koa();
 
@@ -26,19 +27,23 @@ app.use(async (ctx, next) => {
 
 // Route definitions
 
-router.get('/roms/megadrive', romsMegadrive);
-
-app.use(router.routes());
-
-/**
- * Post listing.
- */
-
-async function romsMegadrive(ctx) {
+const romsMegadrive = async ctx => {
   const megadriveRoms = await getAllFiles(megaDriveRomFolder);
   ctx.body = megadriveRoms;
-  // await ctx.render('list', { posts: posts });
-}
+};
+
+router.get('/roms/megadrive', romsMegadrive);
+
+const startRomRoute = async ctx => {
+  const { system, romPath } = ctx.request.body;
+  console.log({ system, romPath });
+  await startRom({ system, romPath });
+  ctx.body = 'success';
+};
+
+router.post('/start-rom', startRomRoute);
+
+app.use(router.routes());
 
 const start = apiPort => {
   app.listen(apiPort);
