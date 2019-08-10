@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "start:client": "cd client && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "update-dependencies": "ncu -u && npm i"
