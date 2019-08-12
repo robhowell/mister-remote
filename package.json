@@ -62,6 +62,6 @@
     "jest": "^24.8.0",
     "lint-staged": "^8.1.5",
     "npm-check-updates": "^3.1.20",
-    "prettier": "^1.16.4"
+    "prettier": "^1.18.2"
   }
 }
