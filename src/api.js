@@ -37,8 +37,14 @@ router.get('/roms/megadrive', romsMegadrive);
 const startRomRoute = async ctx => {
   const { system, romPath } = ctx.request.body;
   console.log({ system, romPath });
-  await startRom({ system, romPath });
-  ctx.body = 'success';
+
+  if (!(typeof system === 'undefined') && !(typeof romPath === 'undefined')) {
+    await startRom({ system, romPath });
+    ctx.body = 'success';
+  } else {
+    console.log(`/start-rom params invalid`);
+    ctx.body = 'success';
+  }
 };
 
 router.post('/start-rom', startRomRoute);
