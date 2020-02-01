@@ -37,7 +37,7 @@
     "babel-eslint": "^9.0.0",
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react": "^7.18.1",
     "koa": "^2.11.0",
     "koa-body": "^4.1.1",
     "koa-logger": "^3.2.1",
