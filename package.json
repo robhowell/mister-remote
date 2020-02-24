@@ -42,7 +42,7 @@
     "koa-body": "^4.1.1",
     "koa-logger": "^3.2.1",
     "koa-router": "^8.0.8",
-    "nodemon": "^1.19.4",
+    "nodemon": "^2.0.2",
     "ssh2-promise": "^0.1.6"
   },
   "devDependencies": {
