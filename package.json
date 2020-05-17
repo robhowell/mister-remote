@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/robhowell/mister-remote#readme",
   "dependencies": {
-    "@koa/cors": "^3.0.0",
+    "@koa/cors": "^3.1.0",
     "babel-eslint": "^9.0.0",
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-jsx-a11y": "^6.2.3",
