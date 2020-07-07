@@ -42,7 +42,7 @@
     "koa-logger": "^3.2.1",
     "koa-router": "^9.1.0",
     "nodemon": "^2.0.4",
-    "ssh2-promise": "^0.1.6"
+    "ssh2-promise": "^0.1.7"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
